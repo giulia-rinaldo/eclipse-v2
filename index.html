@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minutes of totality</title>
+  <meta name="description" content="A total solar eclipse hides the Sun for a few minutes at most. NASA's catalogue of 11,898 eclipses shows how long each one lasts, what people did with the time, and when the next ones come.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Xanh+Mono:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23000'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <pattern id="texture-annular" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(20)">
+        <rect width="6" height="6" style="fill:var(--paper)"/>
+        <line x1="0" y1="3" x2="6" y2="3" style="stroke:var(--ink)" stroke-width="1.4"/>
+      </pattern>
+    </defs>
+  </svg>
+
+  <section id="intro" class="intro">
+    <div class="stage" id="stage">
+      <svg class="scene" id="scene" viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+      <div class="intro-text">
+        <h1>Minutes<br>of totality</h1>
+        <p class="lede">During the five Millennium period 2000 BCE to 3000 CE, Earth will experience 11,898 solar eclipses.<br><br>They fall into four kinds: <span data-fill="catalogueP"></span> partial, <span data-fill="catalogueA"></span> annular, <span data-fill="catalogueH"></span> hybrid and <span data-fill="catalogueT"></span> total. Only in the total ones, about one in <span data-fill="oneInTotal"></span>, does the Moon hide the Sun completely.</p>
+      </div>
+      <p class="scroll-cue">Scroll ↓</p>
+    </div>
+  </section>
+  <div class="fade"></div>
+
+  <section class="screen">
+
+    <p class="prose first">A solar eclipse happens when the Moon passes between the Sun and Earth and blocks some of the Sun's light. From the place where the Moon's shadow falls, the Sun looks partly or completely covered. <br><br> The figure below shows it from that place: move the slider and watch the Moon cross the Sun.</p>
+
+    <figure class="frame no-bottom">
+      <div class="frame-top centred"><b>What is a solar eclipse?</b></div>
+      <div class="scrubber" id="scrubber"></div>
+    </figure>
+    <hr class="rule">
+
+    <p class="prose">NASA's catalogue of solar eclipses runs from 2000 BCE to 3000 CE and lists <span data-fill="all"></span> of them: one every <span data-fill="intervalAll"></span>, somewhere on Earth.</p>
+    <p class="prose">Only <span data-fill="total"></span> of the <span data-fill="all"></span> are total, about one every <span data-fill="intervalTotal"></span>.<br>The longest total eclipse of the 21st century is already behind us: it came on <span data-fill="centuryLongestDate"></span> and lasted <span data-fill="centuryLongestTime"></span> on its central line. The next one, on <span data-fill="nextDate"></span>, will last <span data-fill="nextTime"></span>, and none in the catalogue lasts longer than the <span data-fill="longest"></span> on the dial above. The shadow is narrow too: the path of the 2017 eclipse was <span data-fill="path2017"></span> wide, with <span data-fill="time2017"></span> of totality at its centre. Those durations are measured on the central line.</p>
+
+    <p class="prose">Totality is short. The shortest total eclipse in the catalogue, in the year 919, leaves <span data-fill="shortest"></span> of totality.</p>
+  </section>
+
+  <section class="screen" id="shadow">
+    <h2>Four kinds of solar eclipses</h2>
+    <p class="prose">Every eclipse in the record is one of four kinds and what separates them is a few thousand kilometres: whether the tip of the Moon’s shadow reaches the ground, stops short of it, or misses the Earth entirely.</p>
+    <p class="prose">Seen from the side, the Moon's shadow is a cone with a weaker halo around it. The dark core is the umbra and the halo is the penumbra. Beyond the tip of the cone the shadow opens up again as the antumbra. Which of them touches Earth sets the type of eclipse.<br>The definitions are from the <a href="https://eclipse.gsfc.nasa.gov/SEhelp/SEglossary.html">NASA's glossary</a>.</p>
+
+    <figure class="frame">
+      <div class="frame-top"></div>
+      <div class="type-cards" id="type-cards"></div>
+    </figure>
+
+    <p class="prose big-gap">In the 21st century alone the catalogue has <span data-fill="count21"></span> eclipses: <span data-fill="count21P"></span> partial, <span data-fill="count21A"></span> annular, <span data-fill="count21T"></span> total and <span data-fill="count21H"></span> hybrid. Magnitude puts them on one scale. For total, annular and hybrid eclipses it is the Moon's apparent width divided by the Sun's: above 1 the Moon covers the Sun, below 1 a ring is left, and hybrids sit close to 1 and cross it along their path. For a partial eclipse it is the share of the Sun's width that is covered.</p>
+
+    <figure class="frame">
+      <div class="frame-top centred"><b>All <span data-fill="count21"></span> eclipses from 2001 to 2100, placed by how much of the Sun the Moon covers</b></div>
+      <div class="legend" id="strip-legend" role="group" aria-label="Filter by eclipse type"></div>
+      <div id="strip-central"></div>
+      <div id="strip-partial"></div>
+      <div class="frame-bottom"></div>
+    </figure>
+  </section>
+
+  <section class="screen" id="world">
+    <h2>Who will see<br>the next total eclipse?</h2>
+    <p class="prose" id="world-lead"></p>
+
+    <figure class="frame">
+      <div class="frame-top"></div>
+      <div class="town-search">
+        <input id="town-search" type="search" placeholder="Find a town" aria-label="Find a town">
+        <p id="town-result" aria-live="polite"></p>
+      </div>
+      <div id="world-map"></div>
+      <div class="map-legend" id="map-legend"><span class="map-legend-title">Years until the next total eclipse:</span></div>
+      <div class="frame-bottom"></div>
+    </figure>
+  </section>
+
+  <section class="screen" id="minutes">
+    <h2>What people did with the minutes</h2>
+    <p class="prose">Three rows from the catalogue correspond to three eclipses described in historical or observational accounts: 585 BCE, 1919, and 2017. The numerical data in the table come from NASA’s eclipse catalogue, while the accounts of what observers reported come from the sources cited for each eclipse below.</p>
+    <figure class="frame">
+      <div class="frame-top"></div>
+      <div class="type-cards" id="cases"></div>
+    </figure>
+  </section>
+
+  <section class="screen" id="ahead-section">
+    <h2>Totality, ahead</h2>
+    <p class="prose" id="ahead-claim"></p>
+
+    <figure class="frame">
+      <div class="frame-top centred"><b>The <span data-fill="upcomingCount"></span> total eclipses still to come before 2100, each represented as a clock showing the duration of totality.</b></div>
+      <div class="legend" id="ahead-legend" role="group" aria-label="Order the clocks">
+        <button id="button-date" aria-pressed="true">By date</button>
+        <button id="button-longest" aria-pressed="false">Longest first</button>
+      </div>
+      <div class="clocks small" id="ahead"></div>
+      <div class="frame-bottom"></div>
+    </figure>
+  </section>
+
+  <section class="screen" id="sources">
+    <p class="kicker">Methods and sources</p>
+    <ul class="prose">
+      <li>Eclipse Predictions by Fred Espenak and Jean Meeus (NASA's GSFC), <a href="https://eclipse.gsfc.nasa.gov/SEcat5/catalog.html">Five Millennium Catalog of Solar Eclipses</a>: <a href="https://eclipse.gsfc.nasa.gov/SEcat5/SE-0599--0500.html">599–500 BCE</a> · <a href="https://eclipse.gsfc.nasa.gov/SEcat5/SE1901-2000.html">1901–2000</a> · <a href="https://eclipse.gsfc.nasa.gov/SEcat5/SE2001-2100.html">2001–2100</a>.</li>
+      <li>Catalogue maps in chapter 3: NASA's Five Millennium Canon of Solar Eclipses (Espenak &amp; Meeus), shown here in black and white. <a href="https://eclipse.gsfc.nasa.gov/SEcat5/catalog.html">Originals in colour</a>.</li>
+      <li>Paths of the 51 total eclipses still to come (Figure 4): the northern and southern limits in NASA's <a href="https://eclipse.gsfc.nasa.gov/SEpath/SEpath2001/SE2027Aug02Tpath.html">path tables</a> (Fred Espenak). Towns of 15,000 people or more: <a href="https://www.geonames.org">GeoNames</a>, licence CC BY 4.0. Continents: <a href="https://www.naturalearthdata.com/">Natural Earth</a> 1:110m land.</li>
+    </ul>
+    <ul class="prose">
+      <li>NASA Science, <a href="https://science.nasa.gov/eclipses/types/">Types of Solar Eclipses</a> (the descriptions of total, annular, partial and hybrid eclipses, copied word for word).</li>
+      <li>NASA Eclipse Web Site, <a href="https://eclipse.gsfc.nasa.gov/SEhelp/SEglossary.html">Solar eclipse glossary</a> (umbra, penumbra, antumbra, eclipse types).</li>
+      <li>Querejeta, M. (2011), “On the Eclipse of Thales, Cycles and Probabilities”, <i>Culture and Cosmos</i> 15(1), 5–16. <a href="https://arxiv.org/abs/1307.2095">arXiv:1307.2095</a>. Quotes Herodotus, <i>Histories</i> 1.74, and Pliny, <i>Natural History</i> 2.53.</li>
+      <li>Dyson, F. W., Eddington, A. S. &amp; Davidson, C. (1920), <i>Philosophical Transactions of the Royal Society A</i> 220, 291. <a href="https://doi.org/10.1098/rsta.1920.0009">doi:10.1098/rsta.1920.0009</a>.</li>
+      <li>Longair, M. (2015), “Bending space-time: a commentary on Dyson, Eddington and Davidson (1920)”, <i>Philosophical Transactions of the Royal Society A</i> 373. <a href="https://doi.org/10.1098/rsta.2014.0287">doi:10.1098/rsta.2014.0287</a>.</li>
+      <li>Kennefick, D. (2009), “Testing relativity from the 1919 eclipse—a question of bias”, <i>Physics Today</i> 62(3), 37. <a href="https://doi.org/10.1063/1.3099578">doi:10.1063/1.3099578</a>.</li>
+      <li>Bruns, D. G. (2018), “Gravitational starlight deflection measurements during the 21 August 2017 total solar eclipse”, <i>Classical and Quantum Gravity</i> 35(7), 075009. <a href="https://doi.org/10.1088/1361-6382/aaaf2a">doi:10.1088/1361-6382/aaaf2a</a> (<a href="https://arxiv.org/abs/1802.00343">arXiv:1802.00343</a>)</li>
+    </ul>
+
+    <p class="kicker">Considerations on the data</p>
+    <p class="prose">First, a duration is a measurement on the central line at greatest eclipse. For the 585 BCE eclipse NASA gives 6 minutes 4 seconds, measured in the North Atlantic. The armies fighting in Anatolia saw a different time and the catalogue can't say which.</p>
+    <p class="prose">Second, the catalogue records what happens and when, not why. It gives dates, types, magnitudes and durations and it does not explain the differences between one eclipse and another.</p>
+    <p class="prose">Third, the future is a prediction. NASA says the largest uncertainty in its predictions comes from changes in Earth's rotation, so the further away the date, the less certain the exact time.</p>
+    <p class="prose">Three smaller limits also apply. Dates before 15 October 1582 are in the Julian calendar and years are numbered astronomically: there is a year 0, and 585 BCE is written −584. The coordinates in the catalogue mark the point of greatest eclipse, not the whole path. And whether Thales predicted the 585 BCE eclipse is disputed; only its date is treated as established.</p>
+    <p class="byline">Giulia Rinaldo<span>Introduction to Information Design · Aalto University</span><span>Professor: Jonatan Hildén</span></p>
+  </section>
+
+  <div id="eclipse-wipe" aria-hidden="true"></div>
+
+  <div id="tip" role="tooltip"></div>
+
+  <script src="data.js"></script>
+  <script src="towns.js"></script>
+  <script src="world.js"></script>
+  <script src="cases.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
